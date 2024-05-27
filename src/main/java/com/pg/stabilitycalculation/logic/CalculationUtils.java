@@ -100,43 +100,6 @@ public class CalculationUtils {
         }
     }
 
-    public interface TankConstants {
-        // Ballast tables
-        String BALLAST_FOREPEAK = "Ballast_ForePeak";
-        String BALLAST_NO_00_C = "Ballast_No00_C";
-        String BALLAST_NO_01_C = "Ballast_No01_C";
-        String BALLAST_NO_02_C = "Ballast_No02_C";
-        String BALLAST_NO_03_C = "Ballast_No03_C";
-        String BALLAST_NO_04_C = "Ballast_No04_C";
-        String BALLAST_NO_05_C = "Ballast_No05_C";
-        String BALLAST_NO_06_C = "Ballast_No06_C";
-
-
-        // Fresh water tables
-        String FRESH_WATER_PORT_NO05 = "FreshWater_ManualPort_No05";
-        String FRESH_WATER_MAGNETIC_PORT_NO05 = "FreshWater_MagneticPort_No05";
-        String FRESH_WATER_STARBOARD_NO05 = "FreshWater_ManualStarboard_No05";
-        String FRESH_WATER_MAGNETIC_STARBOARD_NO05 = "FreshWater_MagneticStarboard_No05";
-        String FRESH_WATER_PORT_NO06 = "FreshWater_ManualPort_No06";
-        String FRESH_WATER_MAGNETIC_PORT_NO06 = "FreshWater_MagneticPort_No06";
-        String FRESH_WATER_STARBOARD_NO06 = "FreshWater_ManualStarboard_No06";
-        String FRESH_WATER_MAGNETIC_STARBOARD_NO06 = "FreshWater_MagneticStarboard_No06";
-
-        // Diesel oil tables
-        String DIESEL_OIL_PORT_NO03 = "DieselOilPort_No03";
-        String DIESEL_OIL_STARBOARD_NO03 = "DieselOilStarboard_No03";
-        String DIESEL_OIL_PORT_NO04 = "DieselOilPort_No04";
-        String DIESEL_OIL_STARBOARD_NO04 = "DieselOilStarboard_No04";
-        String DIESEL_OIL_PORT_NO07 = "DieselOilPort_No07";
-        String DIESEL_OIL_STARBOARD_NO07 = "DieselOilStarboard_No07";
-
-        // Miscellaneous tables
-        String EMERGENCY_GENERATOR_PORT = "EmergencyGenerator_Port";
-        String MISCELLANEOUS_OILY_WATER_NO07_C = "Miscellaneous_OilyWater_No07_C";
-        String MISCELLANEOUS_GRAY_WATER_NO08_C = "Miscellaneous_GrayWater_No08_C";
-        String MISCELLANEOUS_SLUDGE_STARBOARD_NO09 = "Miscellaneous_SludgeStarboard_No09";
-    }
-
     public static double calculateTankFS(Connection connection, double tankValue, String tankName) throws SQLException {
         double tankValueInMeters = tankValue / 100;
         double soundingTop = CalculationUtils.topValue(tankValue, tankName);
@@ -205,30 +168,51 @@ public class CalculationUtils {
         }
     }
 
-    public static void calculateSumOfAllTanks(Connection connection, double tankValue, String[] tankNames) throws SQLException {
+    public static double calculateTotalWeight(Connection connection, double tankValue, String[] tankNames) throws SQLException {
         double totalWeight = 0;
+        for (String tankName : tankNames) {
+            double tankWeight = calculateTankWeight(connection, tankValue, tankName);
+            totalWeight += tankWeight;
+        }
+        return totalWeight;
+    }
+
+    public static double calculateTotalMOMV1(Connection connection, double tankValue, String[] tankNames) throws SQLException {
         double totalMOMV1 = 0;
-        double totalMOMV2 = 0;
-        double totalFS = 0;
-    
         for (String tankName : tankNames) {
             double tankWeight = calculateTankWeight(connection, tankValue, tankName);
             double tankLCG = calculateTankLCG(connection, tankValue, tankName);
-            double tankVCG = calculateTankVCG(connection, tankValue, tankName);
-            double tankFS = calculateTankFS(connection, tankValue, tankName);
-            System.out.println(tankFS);
-    
-            totalWeight += tankWeight;
             totalMOMV1 += calculateMOMV1(tankWeight, tankLCG);
+        }
+        return totalMOMV1;
+    }
+
+    public static double calculateTotalMOMV2(Connection connection, double tankValue, String[] tankNames) throws SQLException {
+        double totalMOMV2 = 0;
+        for (String tankName : tankNames) {
+            double tankWeight = calculateTankWeight(connection, tankValue, tankName);
+            double tankVCG = calculateTankVCG(connection, tankValue, tankName);
             totalMOMV2 += calculateMOMV2(tankWeight, tankVCG);
+        }
+        return totalMOMV2;
+    }
+
+    public static double calculateTotalFS(Connection connection, double tankValue, String[] tankNames) throws SQLException {
+        double totalFS = 0;
+        for (String tankName : tankNames) {
+            double tankFS = calculateTankFS(connection, tankValue, tankName);
             totalFS += tankFS;
         }
-    
-        System.out.println("Total Weight: " + totalWeight);
-        System.out.println("Total MOMV1: " + totalMOMV1);
-        System.out.println("Total MOMV2: " + totalMOMV2);
-        System.out.println("Total FS: " + totalFS);
+        return totalFS;
     }
  
+    public static double calculateTotalLCG(Connection connection, double tankValue, String[] tankNames) throws SQLException {
+        return calculateTotalMOMV1(connection, tankValue, tankNames) / calculateTotalWeight(connection, tankValue, tankNames);
+    }
+
+    public static double calculateTotalVCG(Connection connection, double tankValue, String[] tankNames) throws SQLException {
+        return calculateTotalMOMV2(connection, tankValue, tankNames) / calculateTotalWeight(connection, tankValue, tankNames);
+    }
+
 
 }
