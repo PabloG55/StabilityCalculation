@@ -36,6 +36,17 @@ public class TankConstants {
     public static final String MISCELLANEOUS_GRAY_WATER_NO08_C = "Miscellaneous_GrayWater_No08_C";
     public static final String MISCELLANEOUS_SLUDGE_STARBOARD_NO09 = "Miscellaneous_SludgeStarboard_No09";
 
+    //Displacement Rows
+    public static final String DC = "DC";
+    public static final String DISPS = "DispS"; 
+    public static final String TPC = "TPC";
+    public static final String MCT = "MCT";
+    public static final String LCF = "LCF";
+    public static final String LCB = "LCB";
+    public static final String KMT = "KMT";
+    public static final String KML = "KML";
+
+
     public static final String[] BALLAST_TANKS = {
         BALLAST_FOREPEAK,
         BALLAST_NO_00_C,
@@ -74,4 +85,32 @@ public class TankConstants {
         MISCELLANEOUS_SLUDGE_STARBOARD_NO09,
     };
 
+    public static final String[] ALL_TANKS = {
+        BALLAST_FOREPEAK,
+        BALLAST_NO_00_C,
+        BALLAST_NO_01_C,
+        BALLAST_NO_02_C,
+        BALLAST_NO_03_C,
+        BALLAST_NO_04_C,
+        BALLAST_NO_05_C,
+        BALLAST_NO_06_C,
+        FRESH_WATER_MAGNETIC_PORT_NO05,
+        FRESH_WATER_MAGNETIC_PORT_NO06,
+        FRESH_WATER_MAGNETIC_STARBOARD_NO05,
+        FRESH_WATER_MAGNETIC_STARBOARD_NO06,
+        FRESH_WATER_PORT_NO05,
+        FRESH_WATER_PORT_NO06,
+        FRESH_WATER_STARBOARD_NO05,
+        FRESH_WATER_STARBOARD_NO06,
+        DIESEL_OIL_PORT_NO03,
+        DIESEL_OIL_PORT_NO04,
+        DIESEL_OIL_PORT_NO07,
+        DIESEL_OIL_STARBOARD_NO03,
+        DIESEL_OIL_STARBOARD_NO04,
+        DIESEL_OIL_STARBOARD_NO07,
+        DIESEL_OIL_EMERGENCY_GENERATOR_PORT,
+        MISCELLANEOUS_GRAY_WATER_NO08_C,
+        MISCELLANEOUS_OILY_WATER_NO07_C,
+        MISCELLANEOUS_SLUDGE_STARBOARD_NO09,
+    };
 }
