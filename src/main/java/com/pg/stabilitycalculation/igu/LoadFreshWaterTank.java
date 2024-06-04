@@ -1,8 +1,10 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+ * Click nbfW://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfW://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package com.pg.stabilitycalculation.igu;
+
+import com.pg.stabilitycalculation.logic.Controller;
 
 /**
  *
@@ -10,11 +12,11 @@ package com.pg.stabilitycalculation.igu;
  */
 public class LoadFreshWaterTank extends javax.swing.JFrame {
 
-    /**
-     * Creates new form LoadFreshWaterTank
-     */
-    public LoadFreshWaterTank() {
+    private Controller controller;
+
+    public LoadFreshWaterTank(Controller controller) {
         initComponents();
+        this.controller = controller;
     }
 
     /**
@@ -32,21 +34,21 @@ public class LoadFreshWaterTank extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        txtFSMagPrt05 = new javax.swing.JTextField();
+        txtFWMagPrt05 = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        txtFSMagStb05 = new javax.swing.JTextField();
+        txtFWMagStb05 = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        txtFSManPrt06 = new javax.swing.JTextField();
+        txtFWManPrt06 = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
-        txtFSMagPrt06 = new javax.swing.JTextField();
-        txtFSManStb06 = new javax.swing.JTextField();
-        txtFSMagStb06 = new javax.swing.JTextField();
+        txtFWMagPrt06 = new javax.swing.JTextField();
+        txtFWManStb06 = new javax.swing.JTextField();
+        txtFWMagStb06 = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jLabel11 = new javax.swing.JLabel();
-        txtFSManStb05 = new javax.swing.JTextField();
-        txtFSManPrt05 = new javax.swing.JTextField();
+        txtFWManStb05 = new javax.swing.JTextField();
+        txtFWManPrt05 = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -63,7 +65,7 @@ public class LoadFreshWaterTank extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         jLabel4.setText("No. 05. Magnetic Port: ");
 
-        txtFSMagPrt05.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        txtFWMagPrt05.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         jLabel5.setText("No. 05. Manual Starboard:");
@@ -71,21 +73,21 @@ public class LoadFreshWaterTank extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         jLabel6.setText("No. 05. Magnetic Starboard:");
 
-        txtFSMagStb05.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        txtFWMagStb05.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         jLabel7.setText("No. 06. Manual Port:");
 
-        txtFSManPrt06.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        txtFWManPrt06.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         jLabel8.setText("No. 06. Magnetic Port: ");
 
-        txtFSMagPrt06.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        txtFWMagPrt06.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
 
-        txtFSManStb06.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        txtFWManStb06.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
 
-        txtFSMagStb06.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        txtFWMagStb06.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
 
         jLabel10.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         jLabel10.setText("No. 06. Magnetic Starboard:");
@@ -100,9 +102,9 @@ public class LoadFreshWaterTank extends javax.swing.JFrame {
         jLabel11.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         jLabel11.setText("No. 06. Manual Starboard:");
 
-        txtFSManStb05.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        txtFWManStb05.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
 
-        txtFSManPrt05.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        txtFWManPrt05.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
 
         jButton2.setText("Back");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -124,23 +126,23 @@ public class LoadFreshWaterTank extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtFSMagStb06, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtFWMagStb06, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel8)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(txtFSMagPrt06, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtFWMagPrt06, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel7)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(txtFSManPrt06, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtFWManPrt06, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel6)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(txtFSMagStb05, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtFWMagStb05, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(txtFSManStb06, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtFWManStb06, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel4)
@@ -148,9 +150,9 @@ public class LoadFreshWaterTank extends javax.swing.JFrame {
                             .addComponent(jLabel5))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtFSManStb05, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtFSMagPrt05, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtFSManPrt05, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(txtFWManStb05, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtFWMagPrt05, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtFWManPrt05, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(0, 252, Short.MAX_VALUE))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
@@ -166,35 +168,35 @@ public class LoadFreshWaterTank extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel3)
-                    .addComponent(txtFSManPrt05, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtFWManPrt05, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(txtFSMagPrt05, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtFWMagPrt05, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(txtFSManStb05, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtFWManStb05, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(txtFSMagStb05, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtFWMagStb05, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
-                    .addComponent(txtFSManPrt06, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtFWManPrt06, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
-                    .addComponent(txtFSMagPrt06, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtFWMagPrt06, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtFSManStb06, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtFWManStb06, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel11))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
-                    .addComponent(txtFSMagStb06, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtFWMagStb06, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton2)
@@ -242,7 +244,18 @@ public class LoadFreshWaterTank extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        LoadDieselTank dieselOil = new LoadDieselTank();
+        double FWMagPrt05 = SwingUtilities.parseDoubleFromTextField(txtFWMagPrt05);
+        double FWMagPrt06 = SwingUtilities.parseDoubleFromTextField(txtFWMagPrt06);
+        double FWMagStb05 = SwingUtilities.parseDoubleFromTextField(txtFWMagStb05);
+        double FWMagStb06 = SwingUtilities.parseDoubleFromTextField(txtFWMagStb06);
+        double FWManPrt05 = SwingUtilities.parseDoubleFromTextField(txtFWManPrt05);
+        double FWManPrt06 = SwingUtilities.parseDoubleFromTextField(txtFWManPrt06);
+        double FWManStb05 = SwingUtilities.parseDoubleFromTextField(txtFWManStb05);
+        double FWManStb06 = SwingUtilities.parseDoubleFromTextField(txtFWManStb06);
+
+        controller.nextFW(FWMagPrt05, FWMagPrt06, FWMagStb05, FWMagStb06, FWManPrt05, FWManPrt06, FWManStb05, FWManStb06);
+        
+        LoadDieselTank dieselOil = new LoadDieselTank(controller);
         dieselOil.setVisible(true);
         dieselOil.setLocationRelativeTo(null);
         this.dispose();
@@ -271,13 +284,13 @@ public class LoadFreshWaterTank extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JTextField txtFSMagPrt05;
-    private javax.swing.JTextField txtFSMagPrt06;
-    private javax.swing.JTextField txtFSMagStb05;
-    private javax.swing.JTextField txtFSMagStb06;
-    private javax.swing.JTextField txtFSManPrt05;
-    private javax.swing.JTextField txtFSManPrt06;
-    private javax.swing.JTextField txtFSManStb05;
-    private javax.swing.JTextField txtFSManStb06;
+    private javax.swing.JTextField txtFWMagPrt05;
+    private javax.swing.JTextField txtFWMagPrt06;
+    private javax.swing.JTextField txtFWMagStb05;
+    private javax.swing.JTextField txtFWMagStb06;
+    private javax.swing.JTextField txtFWManPrt05;
+    private javax.swing.JTextField txtFWManPrt06;
+    private javax.swing.JTextField txtFWManStb05;
+    private javax.swing.JTextField txtFWManStb06;
     // End of variables declaration//GEN-END:variables
 }

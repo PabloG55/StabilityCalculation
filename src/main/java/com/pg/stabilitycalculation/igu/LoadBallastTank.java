@@ -1,8 +1,7 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package com.pg.stabilitycalculation.igu;
+
+
+import com.pg.stabilitycalculation.logic.Controller;
 
 /**
  *
@@ -10,11 +9,11 @@ package com.pg.stabilitycalculation.igu;
  */
 public class LoadBallastTank extends javax.swing.JFrame {
 
-    /**
-     * Creates new form LoadBallastTank
-     */
+    private Controller controller;
+
     public LoadBallastTank() {
         initComponents();
+        this.controller = new Controller();
     }
 
     /**
@@ -142,7 +141,7 @@ public class LoadBallastTank extends javax.swing.JFrame {
                         .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtNo06C, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(15, 394, Short.MAX_VALUE))
+                .addContainerGap(394, Short.MAX_VALUE))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addComponent(jLabel2)
                 .addGap(0, 0, Short.MAX_VALUE))
@@ -232,7 +231,18 @@ public class LoadBallastTank extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        LoadFreshWaterTank freshWater = new LoadFreshWaterTank();
+        double peakPrt = SwingUtilities.parseDoubleFromTextField(txtPeakPrt);
+        double No00C = SwingUtilities.parseDoubleFromTextField(txtNo00C); 
+        double No01C = SwingUtilities.parseDoubleFromTextField(txtNo01C); 
+        double No02C = SwingUtilities.parseDoubleFromTextField(txtNo02C); 
+        double No03C = SwingUtilities.parseDoubleFromTextField(txtNo03C); 
+        double No04C = SwingUtilities.parseDoubleFromTextField(txtNo04C); 
+        double No05C = SwingUtilities.parseDoubleFromTextField(txtNo05C); 
+        double No06C = SwingUtilities.parseDoubleFromTextField(txtNo06C); 
+
+        controller.nextBallast(peakPrt, No00C, No01C, No02C, No03C, No04C, No05C, No06C);
+        
+        LoadFreshWaterTank freshWater = new LoadFreshWaterTank(controller);
         freshWater.setVisible(true);
         freshWater.setLocationRelativeTo(null);
         this.dispose();    

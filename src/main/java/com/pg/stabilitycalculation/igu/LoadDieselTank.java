@@ -4,17 +4,19 @@
  */
 package com.pg.stabilitycalculation.igu;
 
+import com.pg.stabilitycalculation.logic.Controller;
+
 /**
  *
  * @author pgarc
  */
 public class LoadDieselTank extends javax.swing.JFrame {
 
-    /**
-     * Creates new form LoadDieselTank
-     */
-    public LoadDieselTank() {
+    private Controller controller;
+
+    public LoadDieselTank(Controller controller) {
         initComponents();
+        this.controller = controller;
     }
 
     /**
@@ -232,14 +234,24 @@ public class LoadDieselTank extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        LoadMiscellaneousTank miscellaneous = new LoadMiscellaneousTank();
+        double DoEmerPrt = SwingUtilities.parseDoubleFromTextField(txtDoEmerPrt);
+        double DoPrt03 = SwingUtilities.parseDoubleFromTextField(txtDoPrt03);
+        double DoPrt04 = SwingUtilities.parseDoubleFromTextField(txtDoPrt04);
+        double DoPrt07 = SwingUtilities.parseDoubleFromTextField(txtDoPrt07);
+        double DoStb03 = SwingUtilities.parseDoubleFromTextField(txtDoStb03);
+        double DoStb04 = SwingUtilities.parseDoubleFromTextField(txtDoStb04);
+        double DoStb07 = SwingUtilities.parseDoubleFromTextField(txtDoStb07);
+
+        controller.nextDO(DoEmerPrt, DoPrt03, DoPrt04, DoPrt07, DoStb03, DoStb04, DoStb07);
+
+        LoadMiscellaneousTank miscellaneous = new LoadMiscellaneousTank(controller);
         miscellaneous.setVisible(true);
         miscellaneous.setLocationRelativeTo(null);
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        LoadFreshWaterTank freshWater = new LoadFreshWaterTank();
+        LoadFreshWaterTank freshWater = new LoadFreshWaterTank(controller);
         freshWater.setVisible(true);
         freshWater.setLocationRelativeTo(null);
         this.dispose();

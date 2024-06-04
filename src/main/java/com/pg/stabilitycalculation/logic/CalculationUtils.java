@@ -100,6 +100,7 @@ public class CalculationUtils {
         }
     }
 
+    //Calculate values
     public static double calculateTankFS(Connection connection, double tankValue, String tankName) throws SQLException {
         double tankValueInMeters = tankValue / 100;
         double soundingTop = CalculationUtils.topValue(tankValue, tankName);
