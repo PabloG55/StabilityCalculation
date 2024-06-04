@@ -89,27 +89,27 @@
                           <Group type="102" attributes="0">
                               <Component id="jLabel10" max="32767" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="txtFSMagStb06" min="-2" pref="71" max="-2" attributes="0"/>
+                              <Component id="txtFWMagStb06" min="-2" pref="71" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
                               <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
-                              <Component id="txtFSMagPrt06" min="-2" pref="71" max="-2" attributes="0"/>
+                              <Component id="txtFWMagPrt06" min="-2" pref="71" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
                               <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
-                              <Component id="txtFSManPrt06" min="-2" pref="71" max="-2" attributes="0"/>
+                              <Component id="txtFWManPrt06" min="-2" pref="71" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
                               <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
-                              <Component id="txtFSMagStb05" min="-2" pref="71" max="-2" attributes="0"/>
+                              <Component id="txtFWMagStb05" min="-2" pref="71" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" attributes="0">
                               <Component id="jLabel11" min="-2" pref="213" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
-                              <Component id="txtFSManStb06" min="-2" pref="71" max="-2" attributes="0"/>
+                              <Component id="txtFWManStb06" min="-2" pref="71" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
@@ -119,9 +119,9 @@
                               </Group>
                               <EmptySpace min="36" max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="txtFSManStb05" min="-2" pref="71" max="-2" attributes="0"/>
-                                  <Component id="txtFSMagPrt05" alignment="0" min="-2" pref="71" max="-2" attributes="0"/>
-                                  <Component id="txtFSManPrt05" min="-2" pref="71" max="-2" attributes="0"/>
+                                  <Component id="txtFWManStb05" min="-2" pref="71" max="-2" attributes="0"/>
+                                  <Component id="txtFWMagPrt05" alignment="0" min="-2" pref="71" max="-2" attributes="0"/>
+                                  <Component id="txtFWManPrt05" min="-2" pref="71" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -143,42 +143,42 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
                           <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtFSManPrt05" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtFWManPrt05" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtFSMagPrt05" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtFWMagPrt05" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtFSManStb05" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtFWManStb05" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtFSMagStb05" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtFWMagStb05" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtFSManPrt06" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtFWManPrt06" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtFSMagPrt06" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtFWMagPrt06" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="txtFSManStb06" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtFWManStb06" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel11" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel10" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtFSMagStb06" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtFWMagStb06" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace pref="16" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
@@ -215,7 +215,7 @@
                 <Property name="text" type="java.lang.String" value="No. 05. Magnetic Port: "/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="txtFSMagPrt05">
+            <Component class="javax.swing.JTextField" name="txtFWMagPrt05">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI" size="16" style="0"/>
@@ -238,7 +238,7 @@
                 <Property name="text" type="java.lang.String" value="No. 05. Magnetic Starboard:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="txtFSMagStb05">
+            <Component class="javax.swing.JTextField" name="txtFWMagStb05">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI" size="16" style="0"/>
@@ -253,7 +253,7 @@
                 <Property name="text" type="java.lang.String" value="No. 06. Manual Port:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="txtFSManPrt06">
+            <Component class="javax.swing.JTextField" name="txtFWManPrt06">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI" size="16" style="0"/>
@@ -268,21 +268,21 @@
                 <Property name="text" type="java.lang.String" value="No. 06. Magnetic Port: "/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="txtFSMagPrt06">
+            <Component class="javax.swing.JTextField" name="txtFWMagPrt06">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI" size="16" style="0"/>
                 </Property>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="txtFSManStb06">
+            <Component class="javax.swing.JTextField" name="txtFWManStb06">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI" size="16" style="0"/>
                 </Property>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="txtFSMagStb06">
+            <Component class="javax.swing.JTextField" name="txtFWMagStb06">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI" size="16" style="0"/>
@@ -313,14 +313,14 @@
                 <Property name="text" type="java.lang.String" value="No. 06. Manual Starboard:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="txtFSManStb05">
+            <Component class="javax.swing.JTextField" name="txtFWManStb05">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI" size="16" style="0"/>
                 </Property>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="txtFSManPrt05">
+            <Component class="javax.swing.JTextField" name="txtFWManPrt05">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI" size="16" style="0"/>

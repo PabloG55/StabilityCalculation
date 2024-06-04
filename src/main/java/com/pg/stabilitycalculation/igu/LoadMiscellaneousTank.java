@@ -4,17 +4,19 @@
  */
 package com.pg.stabilitycalculation.igu;
 
+import com.pg.stabilitycalculation.logic.Controller;
+
 /**
  *
  * @author pgarc
  */
 public class LoadMiscellaneousTank extends javax.swing.JFrame {
 
-    /**
-     * Creates new form LoadMiscellaneousTank
-     */
-    public LoadMiscellaneousTank() {
+    private Controller controller;
+
+    public LoadMiscellaneousTank(Controller controller) {
         initComponents();
+        this.controller = controller;
     }
 
     /**
@@ -170,14 +172,20 @@ public class LoadMiscellaneousTank extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        LoadLuggagePax luggagePax = new LoadLuggagePax();
+        double MisGrayWater08 = SwingUtilities.parseDoubleFromTextField(txtMisGrayWater08);
+        double MisOilyWater07 = SwingUtilities.parseDoubleFromTextField(txtMisOilyWater07);
+        double MisSludgeStb09 = SwingUtilities.parseDoubleFromTextField(txtMisSludgeStb09);
+
+        controller.nextMisc(MisGrayWater08, MisOilyWater07, MisSludgeStb09);
+
+        LoadLuggagePax luggagePax = new LoadLuggagePax(controller);
         luggagePax.setVisible(true);
         luggagePax.setLocationRelativeTo(null);
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        LoadDieselTank dieselOil = new LoadDieselTank();
+        LoadDieselTank dieselOil = new LoadDieselTank(controller);
         dieselOil.setVisible(true);
         dieselOil.setLocationRelativeTo(null);
         this.dispose();

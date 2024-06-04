@@ -4,17 +4,19 @@
  */
 package com.pg.stabilitycalculation.igu;
 
+import com.pg.stabilitycalculation.logic.Controller;
+
 /**
  *
  * @author pgarc
  */
 public class LoadLuggagePax extends javax.swing.JFrame {
 
-    /**
-     * Creates new form LoadLuggagePax
-     */
-    public LoadLuggagePax() {
+    private Controller controller;
+
+    public LoadLuggagePax(Controller controller) {
         initComponents();
+        this.controller = controller;
     }
 
     /**
@@ -171,11 +173,23 @@ public class LoadLuggagePax extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        double CrewNo = SwingUtilities.parseDoubleFromTextField(txtCrewNo);
+        double LuggageNo = SwingUtilities.parseDoubleFromTextField(txtLuggageNo);
+        double PaxNo = SwingUtilities.parseDoubleFromTextField(txtPaxNo);
+    
+        controller.nextWeightedEntity(CrewNo, LuggageNo, PaxNo);
+
+        
+
+        Results results = new Results();
+        results.setValues(0, 0, 0, 0, 0);
+        results.setVisible(true);
+        results.setLocationRelativeTo(null);
+        this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        LoadMiscellaneousTank miscellaneous = new LoadMiscellaneousTank();
+        LoadMiscellaneousTank miscellaneous = new LoadMiscellaneousTank(controller);
         miscellaneous.setVisible(true);
         miscellaneous.setLocationRelativeTo(null);
         this.dispose();
