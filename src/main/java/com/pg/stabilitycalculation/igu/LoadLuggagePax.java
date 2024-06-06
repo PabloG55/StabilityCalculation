@@ -4,7 +4,9 @@
  */
 package com.pg.stabilitycalculation.igu;
 
+import com.pg.stabilitycalculation.logic.Calculator;
 import com.pg.stabilitycalculation.logic.Controller;
+import com.pg.stabilitycalculation.logic.TankConstants;
 
 /**
  *
@@ -13,9 +15,10 @@ import com.pg.stabilitycalculation.logic.Controller;
 public class LoadLuggagePax extends javax.swing.JFrame {
 
     private Controller controller;
-
+    private Calculator calc;
     public LoadLuggagePax(Controller controller) {
         initComponents();
+        calc = new Calculator();
         this.controller = controller;
     }
 
@@ -177,12 +180,33 @@ public class LoadLuggagePax extends javax.swing.JFrame {
         double LuggageNo = SwingUtilities.parseDoubleFromTextField(txtLuggageNo);
         double PaxNo = SwingUtilities.parseDoubleFromTextField(txtPaxNo);
     
-        controller.nextWeightedEntity(CrewNo, LuggageNo, PaxNo);
+        controller.setWeightedEntities(CrewNo, LuggageNo, PaxNo);
+
+        String[] ballastTanksS = TankConstants.BALLAST_TANKS;
+        String[] fwTanksS = TankConstants.FRESH_WATER_TANKS;
+        String[] dieselTanksS = TankConstants.DIESEL_TANKS;
+        String[] miscTanksS = TankConstants.MISCELLANEOUS_TANKS;
+
+        double[] ballastTanks = controller.getBallastTankValues();
+        double[] fwTanks = controller.getFreshwaterTankValues();
+        double[] dieselTanks = controller.getDieselTankValues();
+        double[] miscTanks = controller.getMiscTankValues();
 
         
+        double km = calc.getKM(
+            ballastTanksS, 
+            fwTanksS, 
+            dieselTanksS, 
+            miscTanksS, 
+            ballastTanks, 
+            fwTanks, 
+            dieselTanks, 
+            miscTanks
+        );
+
 
         Results results = new Results();
-        results.setValues(0, 0, 0, 0, 0);
+        results.setValues(0, 0, km, 0, 0);
         results.setVisible(true);
         results.setLocationRelativeTo(null);
         this.dispose();

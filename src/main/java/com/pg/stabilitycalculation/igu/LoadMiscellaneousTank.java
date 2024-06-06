@@ -172,11 +172,14 @@ public class LoadMiscellaneousTank extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        double MisGrayWater08 = SwingUtilities.parseDoubleFromTextField(txtMisGrayWater08);
-        double MisOilyWater07 = SwingUtilities.parseDoubleFromTextField(txtMisOilyWater07);
-        double MisSludgeStb09 = SwingUtilities.parseDoubleFromTextField(txtMisSludgeStb09);
-
-        controller.nextMisc(MisGrayWater08, MisOilyWater07, MisSludgeStb09);
+        double[] miscValues = new double[]{
+            SwingUtilities.parseDoubleFromTextField(txtMisGrayWater08),
+            SwingUtilities.parseDoubleFromTextField(txtMisOilyWater07),
+            SwingUtilities.parseDoubleFromTextField(txtMisSludgeStb09)
+        };
+        
+        controller.setMiscTanks(miscValues);
+        
 
         LoadLuggagePax luggagePax = new LoadLuggagePax(controller);
         luggagePax.setVisible(true);

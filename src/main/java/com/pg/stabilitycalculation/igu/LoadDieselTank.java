@@ -234,15 +234,17 @@ public class LoadDieselTank extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        double DoEmerPrt = SwingUtilities.parseDoubleFromTextField(txtDoEmerPrt);
-        double DoPrt03 = SwingUtilities.parseDoubleFromTextField(txtDoPrt03);
-        double DoPrt04 = SwingUtilities.parseDoubleFromTextField(txtDoPrt04);
-        double DoPrt07 = SwingUtilities.parseDoubleFromTextField(txtDoPrt07);
-        double DoStb03 = SwingUtilities.parseDoubleFromTextField(txtDoStb03);
-        double DoStb04 = SwingUtilities.parseDoubleFromTextField(txtDoStb04);
-        double DoStb07 = SwingUtilities.parseDoubleFromTextField(txtDoStb07);
+        double[] dieselValues = new double[]{
+            SwingUtilities.parseDoubleFromTextField(txtDoEmerPrt),
+            SwingUtilities.parseDoubleFromTextField(txtDoPrt03),
+            SwingUtilities.parseDoubleFromTextField(txtDoPrt04),
+            SwingUtilities.parseDoubleFromTextField(txtDoPrt07),
+            SwingUtilities.parseDoubleFromTextField(txtDoStb03),
+            SwingUtilities.parseDoubleFromTextField(txtDoStb04),
+            SwingUtilities.parseDoubleFromTextField(txtDoStb07)
+        };
 
-        controller.nextDO(DoEmerPrt, DoPrt03, DoPrt04, DoPrt07, DoStb03, DoStb04, DoStb07);
+        controller.setDieselTanks(dieselValues);
 
         LoadMiscellaneousTank miscellaneous = new LoadMiscellaneousTank(controller);
         miscellaneous.setVisible(true);

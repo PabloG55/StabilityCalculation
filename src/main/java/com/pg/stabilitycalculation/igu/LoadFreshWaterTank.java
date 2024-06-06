@@ -244,16 +244,18 @@ public class LoadFreshWaterTank extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        double FWMagPrt05 = SwingUtilities.parseDoubleFromTextField(txtFWMagPrt05);
-        double FWMagPrt06 = SwingUtilities.parseDoubleFromTextField(txtFWMagPrt06);
-        double FWMagStb05 = SwingUtilities.parseDoubleFromTextField(txtFWMagStb05);
-        double FWMagStb06 = SwingUtilities.parseDoubleFromTextField(txtFWMagStb06);
-        double FWManPrt05 = SwingUtilities.parseDoubleFromTextField(txtFWManPrt05);
-        double FWManPrt06 = SwingUtilities.parseDoubleFromTextField(txtFWManPrt06);
-        double FWManStb05 = SwingUtilities.parseDoubleFromTextField(txtFWManStb05);
-        double FWManStb06 = SwingUtilities.parseDoubleFromTextField(txtFWManStb06);
+        double[] freshwaterValues = new double[]{
+            SwingUtilities.parseDoubleFromTextField(txtFWMagPrt05),
+            SwingUtilities.parseDoubleFromTextField(txtFWMagPrt06),
+            SwingUtilities.parseDoubleFromTextField(txtFWMagStb05),
+            SwingUtilities.parseDoubleFromTextField(txtFWMagStb06),
+            SwingUtilities.parseDoubleFromTextField(txtFWManPrt05),
+            SwingUtilities.parseDoubleFromTextField(txtFWManPrt06),
+            SwingUtilities.parseDoubleFromTextField(txtFWManStb05),
+            SwingUtilities.parseDoubleFromTextField(txtFWManStb06)
+        };
 
-        controller.nextFW(FWMagPrt05, FWMagPrt06, FWMagStb05, FWMagStb06, FWManPrt05, FWManPrt06, FWManStb05, FWManStb06);
+        controller.setFreshwaterTanks(freshwaterValues);
         
         LoadDieselTank dieselOil = new LoadDieselTank(controller);
         dieselOil.setVisible(true);

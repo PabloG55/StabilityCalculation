@@ -231,16 +231,18 @@ public class LoadBallastTank extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        double peakPrt = SwingUtilities.parseDoubleFromTextField(txtPeakPrt);
-        double No00C = SwingUtilities.parseDoubleFromTextField(txtNo00C); 
-        double No01C = SwingUtilities.parseDoubleFromTextField(txtNo01C); 
-        double No02C = SwingUtilities.parseDoubleFromTextField(txtNo02C); 
-        double No03C = SwingUtilities.parseDoubleFromTextField(txtNo03C); 
-        double No04C = SwingUtilities.parseDoubleFromTextField(txtNo04C); 
-        double No05C = SwingUtilities.parseDoubleFromTextField(txtNo05C); 
-        double No06C = SwingUtilities.parseDoubleFromTextField(txtNo06C); 
+        double[] ballastValues = new double[]{
+            SwingUtilities.parseDoubleFromTextField(txtPeakPrt),
+            SwingUtilities.parseDoubleFromTextField(txtNo00C),
+            SwingUtilities.parseDoubleFromTextField(txtNo01C),
+            SwingUtilities.parseDoubleFromTextField(txtNo02C),
+            SwingUtilities.parseDoubleFromTextField(txtNo03C),
+            SwingUtilities.parseDoubleFromTextField(txtNo04C),
+            SwingUtilities.parseDoubleFromTextField(txtNo05C),
+            SwingUtilities.parseDoubleFromTextField(txtNo06C)
+        };
 
-        controller.nextBallast(peakPrt, No00C, No01C, No02C, No03C, No04C, No05C, No06C);
+        controller.setBallastTanks(ballastValues);
         
         LoadFreshWaterTank freshWater = new LoadFreshWaterTank(controller);
         freshWater.setVisible(true);
