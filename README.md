@@ -1,4 +1,4 @@
-# Stability Calculation App for Ships
+# Stability Calculation App for the National Geographic Endeavour II
 
 ## Overview
 This Java application automates the stability calculations for ships, designed to assist in the quick and accurate assessment of a ship's stability. It uses ship data located on a database and was developed to streamline the process for my father, who works on a ship, making it less time-consuming and more efficient.
