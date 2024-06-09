@@ -16,7 +16,7 @@ To install the application, download the latest release from the releases page a
 1. Run the application.
 ![](images/1.jpg)
 
-3. Input the required data for stability calculations.
+2. Input the required data for stability calculations.
 ![](images/2.jpg)
 
 ![](images/3.jpg)
@@ -27,5 +27,5 @@ To install the application, download the latest release from the releases page a
 
 ![](images/6.jpg)
 
-4. Review the results and export if necessary.
+3. Review the results and export if necessary.
 ![](images/7.jpg)
