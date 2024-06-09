@@ -48,7 +48,7 @@ public class CalculationUtils {
                 if (resultSet.next()) {
                     return resultSet.getDouble("metric_ton_weight");
                 } else {
-                    System.out.println("No data found for sounding_meters = " + soundingMeters);
+                    System.out.println("getMetricTonWeight No data found for sounding_meters = " + soundingMeters + " tankName: " + tankName);
                     return 0;
                 }
             }
@@ -63,7 +63,7 @@ public class CalculationUtils {
                 if (resultSet.next()) {
                     return resultSet.getDouble("LCG");
                 } else {
-                    System.out.println("No data found for sounding_meters = " + soundingMeters);
+                    System.out.println("getLCG No data found for sounding_meters = " + " tankName: " + tankName);
                     return 0;
                 }
             }
@@ -78,7 +78,7 @@ public class CalculationUtils {
                 if (resultSet.next()) {
                     return resultSet.getDouble("VCG");
                 } else {
-                    System.out.println("No data found for sounding_meters = " + soundingMeters);
+                    System.out.println("getVCG No data found for sounding_meters = " + " tankName: " + tankName);
                     return 0;
                 }
             }
@@ -93,7 +93,7 @@ public class CalculationUtils {
                 if (resultSet.next()) {
                     return resultSet.getDouble("FSM");
                 } else {
-                    System.out.println("No data found for sounding_meters = " + soundingMeters);
+                    System.out.println("getFS No data found for sounding_meters = " + " tankName: " + tankName);
                     return 0;
                 }
             }
@@ -146,11 +146,15 @@ public class CalculationUtils {
         }
     }
 
-    public static double calculateMOMV1(double weight, double lcg) {
+    public static double calculateTankMOMV1(Connection connection, double tankValue, String tankName) throws SQLException {
+        double weight = calculateTankWeight(connection, tankValue, tankName);
+        double lcg = calculateTankLCG(connection, tankValue, tankName);
         return weight * lcg;
     }
 
-    public static double calculateMOMV2(double weight, double vcg) {
+    public static double calculateTankMOMV2(Connection connection, double tankValue, String tankName) throws SQLException {
+        double weight = calculateTankWeight(connection, tankValue, tankName);
+        double vcg = calculateTankVCG(connection, tankValue, tankName);
         return weight * vcg;
     }  
 
@@ -169,51 +173,51 @@ public class CalculationUtils {
         }
     }
 
-    public static double calculateTotalWeight(Connection connection, double tankValue, String[] tankNames) throws SQLException {
-        double totalWeight = 0;
-        for (String tankName : tankNames) {
-            double tankWeight = calculateTankWeight(connection, tankValue, tankName);
-            totalWeight += tankWeight;
-        }
-        return totalWeight;
-    }
+    // public static double calculateTotalWeight(Connection connection, double tankValue, String[] tankNames) throws SQLException {
+    //     double totalWeight = 0;
+    //     for (String tankName : tankNames) {
+    //         double tankWeight = calculateTankWeight(connection, tankValue, tankName);
+    //         totalWeight += tankWeight;
+    //     }
+    //     return totalWeight;
+    // }
 
-    public static double calculateTotalMOMV1(Connection connection, double tankValue, String[] tankNames) throws SQLException {
-        double totalMOMV1 = 0;
-        for (String tankName : tankNames) {
-            double tankWeight = calculateTankWeight(connection, tankValue, tankName);
-            double tankLCG = calculateTankLCG(connection, tankValue, tankName);
-            totalMOMV1 += calculateMOMV1(tankWeight, tankLCG);
-        }
-        return totalMOMV1;
-    }
+    // public static double calculateTotalMOMV1(Connection connection, double tankValue, String[] tankNames) throws SQLException {
+    //     double totalMOMV1 = 0;
+    //     for (String tankName : tankNames) {
+    //         double tankWeight = calculateTankWeight(connection, tankValue, tankName);
+    //         double tankLCG = calculateTankLCG(connection, tankValue, tankName);
+    //         totalMOMV1 += calculateMOMV1(tankWeight, tankLCG);
+    //     }
+    //     return totalMOMV1;
+    // }
 
-    public static double calculateTotalMOMV2(Connection connection, double tankValue, String[] tankNames) throws SQLException {
-        double totalMOMV2 = 0;
-        for (String tankName : tankNames) {
-            double tankWeight = calculateTankWeight(connection, tankValue, tankName);
-            double tankVCG = calculateTankVCG(connection, tankValue, tankName);
-            totalMOMV2 += calculateMOMV2(tankWeight, tankVCG);
-        }
-        return totalMOMV2;
-    }
+    // public static double calculateTotalMOMV2(Connection connection, double tankValue, String[] tankNames) throws SQLException {
+    //     double totalMOMV2 = 0;
+    //     for (String tankName : tankNames) {
+    //         double tankWeight = calculateTankWeight(connection, tankValue, tankName);
+    //         double tankVCG = calculateTankVCG(connection, tankValue, tankName);
+    //         totalMOMV2 += calculateMOMV2(tankWeight, tankVCG);
+    //     }
+    //     return totalMOMV2;
+    // }
 
-    public static double calculateTotalFS(Connection connection, double tankValue, String[] tankNames) throws SQLException {
-        double totalFS = 0;
-        for (String tankName : tankNames) {
-            double tankFS = calculateTankFS(connection, tankValue, tankName);
-            totalFS += tankFS;
-        }
-        return totalFS;
-    }
+    // public static double calculateTotalFS(Connection connection, double tankValue, String[] tankNames) throws SQLException {
+    //     double totalFS = 0;
+    //     for (String tankName : tankNames) {
+    //         double tankFS = calculateTankFS(connection, tankValue, tankName);
+    //         totalFS += tankFS;
+    //     }
+    //     return totalFS;
+    // }
  
-    public static double calculateTotalLCG(Connection connection, double tankValue, String[] tankNames) throws SQLException {
-        return calculateTotalMOMV1(connection, tankValue, tankNames) / calculateTotalWeight(connection, tankValue, tankNames);
-    }
+    // public static double calculateTotalLCG(Connection connection, double tankValue, String[] tankNames) throws SQLException {
+    //     return calculateTotalMOMV1(connection, tankValue, tankNames) / calculateTotalWeight(connection, tankValue, tankNames);
+    // }
 
-    public static double calculateTotalVCG(Connection connection, double tankValue, String[] tankNames) throws SQLException {
-        return calculateTotalMOMV2(connection, tankValue, tankNames) / calculateTotalWeight(connection, tankValue, tankNames);
-    }
+    // public static double calculateTotalVCG(Connection connection, double tankValue, String[] tankNames) throws SQLException {
+    //     return calculateTotalMOMV2(connection, tankValue, tankNames) / calculateTotalWeight(connection, tankValue, tankNames);
+    // }
 
     public static double calculateTotalPax(double crew, double pax) {
         return crew + pax;

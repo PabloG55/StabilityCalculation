@@ -1,11 +1,6 @@
 package com.pg.stabilitycalculation;
-
-import java.sql.*;
-
 import com.pg.stabilitycalculation.igu.Main;
-import com.pg.stabilitycalculation.logic.CalculationUtils;
-import com.pg.stabilitycalculation.logic.Controller;
-import com.pg.stabilitycalculation.logic.TankConstants;
+
 
 /**
  *

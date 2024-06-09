@@ -4,25 +4,106 @@
  */
 package com.pg.stabilitycalculation.igu;
 
+import com.pg.stabilitycalculation.logic.Calculator;
+import com.pg.stabilitycalculation.logic.Controller;
+import com.pg.stabilitycalculation.logic.TankConstants;
+
 /**
  *
  * @author pgarc
  */
 public class Results extends javax.swing.JFrame {
 
+    private Controller controller;
+    private Calculator calc;
+
     /**
      * Creates new form Results
      */
-    public Results() {
+    public Results(Controller controller) {
         initComponents();
+        calc = new Calculator();
+        this.controller = controller;
+        setValues();
     }
 
-    public void setValues(double cPort, double cStarboard, double km, double kg, double gm) {
+    public void setValues() {
+        String[] ballastTanksS = TankConstants.BALLAST_TANKS;
+        String[] fwTanksS = TankConstants.FRESH_WATER_TANKS;
+        String[] dieselTanksS = TankConstants.DIESEL_TANKS;
+        String[] miscTanksS = TankConstants.MISCELLANEOUS_TANKS;
+
+        double[] ballastTanks = controller.getBallastTankValues();
+        double[] fwTanks = controller.getFreshwaterTankValues();
+        double[] dieselTanks = controller.getDieselTankValues();
+        double[] miscTanks = controller.getMiscTankValues();
+
+        double cPort = Math.round(calc.getCPort(
+            ballastTanksS, 
+            fwTanksS, 
+            dieselTanksS, 
+            miscTanksS, 
+            ballastTanks, 
+            fwTanks, 
+            dieselTanks, 
+            miscTanks
+        ) * 1000.0) / 1000.0;
+
+        double cStarboard = Math.round(calc.getCStarboard(
+            ballastTanksS, 
+            fwTanksS, 
+            dieselTanksS, 
+            miscTanksS, 
+            ballastTanks, 
+            fwTanks, 
+            dieselTanks, 
+            miscTanks
+        ) * 1000.0) / 1000.0;
+
+        double km = Math.round(calc.getKM(
+            ballastTanksS, 
+            fwTanksS, 
+            dieselTanksS, 
+            miscTanksS, 
+            ballastTanks, 
+            fwTanks, 
+            dieselTanks, 
+            miscTanks
+        ) * 1000.0) / 1000.0;
+        
+        double kg = Math.round(calc.getKG(
+            ballastTanksS, 
+            fwTanksS, 
+            dieselTanksS, 
+            miscTanksS, 
+            ballastTanks, 
+            fwTanks, 
+            dieselTanks, 
+            miscTanks
+        ) * 1000.0) / 1000.0;
+
+        double gm = Math.round(calc.getGM(
+            ballastTanksS, 
+            fwTanksS, 
+            dieselTanksS, 
+            miscTanksS, 
+            ballastTanks, 
+            fwTanks, 
+            dieselTanks, 
+            miscTanks
+        ) * 1000.0) / 1000.0;
+
         jTextPane2.setText(String.valueOf(cPort));
         jTextPane1.setText(String.valueOf(cStarboard));
         jTextPane3.setText(String.valueOf(km));
         jTextPane4.setText(String.valueOf(kg));
         jTextPane5.setText(String.valueOf(gm));
+
+        jTextPane2.setEditable(false);
+        jTextPane1.setEditable(false);
+        jTextPane3.setEditable(false);
+        jTextPane4.setEditable(false);
+        jTextPane5.setEditable(false);
     }
 
     /**

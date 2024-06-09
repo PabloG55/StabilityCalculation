@@ -173,8 +173,8 @@ public class LoadMiscellaneousTank extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         double[] miscValues = new double[]{
-            SwingUtilities.parseDoubleFromTextField(txtMisGrayWater08),
             SwingUtilities.parseDoubleFromTextField(txtMisOilyWater07),
+            SwingUtilities.parseDoubleFromTextField(txtMisGrayWater08),
             SwingUtilities.parseDoubleFromTextField(txtMisSludgeStb09)
         };
         

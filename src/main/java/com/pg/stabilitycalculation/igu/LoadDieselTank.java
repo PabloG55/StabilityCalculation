@@ -235,13 +235,14 @@ public class LoadDieselTank extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         double[] dieselValues = new double[]{
-            SwingUtilities.parseDoubleFromTextField(txtDoEmerPrt),
             SwingUtilities.parseDoubleFromTextField(txtDoPrt03),
-            SwingUtilities.parseDoubleFromTextField(txtDoPrt04),
-            SwingUtilities.parseDoubleFromTextField(txtDoPrt07),
             SwingUtilities.parseDoubleFromTextField(txtDoStb03),
+            SwingUtilities.parseDoubleFromTextField(txtDoPrt04),
             SwingUtilities.parseDoubleFromTextField(txtDoStb04),
-            SwingUtilities.parseDoubleFromTextField(txtDoStb07)
+            SwingUtilities.parseDoubleFromTextField(txtDoPrt07),
+            SwingUtilities.parseDoubleFromTextField(txtDoStb07),
+            SwingUtilities.parseDoubleFromTextField(txtDoEmerPrt)
+
         };
 
         controller.setDieselTanks(dieselValues);

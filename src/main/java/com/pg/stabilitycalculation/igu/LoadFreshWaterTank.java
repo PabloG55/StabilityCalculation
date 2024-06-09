@@ -245,14 +245,14 @@ public class LoadFreshWaterTank extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         double[] freshwaterValues = new double[]{
-            SwingUtilities.parseDoubleFromTextField(txtFWMagPrt05),
-            SwingUtilities.parseDoubleFromTextField(txtFWMagPrt06),
-            SwingUtilities.parseDoubleFromTextField(txtFWMagStb05),
-            SwingUtilities.parseDoubleFromTextField(txtFWMagStb06),
             SwingUtilities.parseDoubleFromTextField(txtFWManPrt05),
-            SwingUtilities.parseDoubleFromTextField(txtFWManPrt06),
+            SwingUtilities.parseDoubleFromTextField(txtFWMagPrt05),
             SwingUtilities.parseDoubleFromTextField(txtFWManStb05),
-            SwingUtilities.parseDoubleFromTextField(txtFWManStb06)
+            SwingUtilities.parseDoubleFromTextField(txtFWMagStb05),
+            SwingUtilities.parseDoubleFromTextField(txtFWManPrt06),
+            SwingUtilities.parseDoubleFromTextField(txtFWMagPrt06),
+            SwingUtilities.parseDoubleFromTextField(txtFWManStb06),
+            SwingUtilities.parseDoubleFromTextField(txtFWMagStb06)
         };
 
         controller.setFreshwaterTanks(freshwaterValues);
