@@ -17,6 +17,18 @@ public class LoadFreshWaterTank extends javax.swing.JFrame {
     public LoadFreshWaterTank(Controller controller) {
         initComponents();
         this.controller = controller;
+        setValues();
+    }
+
+    public void setValues(){
+        txtFWManPrt05.setText("0");
+        txtFWMagPrt05.setText("0");
+        txtFWManStb05.setText("0");
+        txtFWMagStb05.setText("0");
+        txtFWManPrt06.setText("0");
+        txtFWMagPrt06.setText("0");
+        txtFWManStb06.setText("0");
+        txtFWMagStb06.setText("0");
     }
 
     /**

@@ -177,7 +177,7 @@ public class LoadLuggagePax extends javax.swing.JFrame {
         double PaxNo = SwingUtilities.parseDoubleFromTextField(txtPaxNo);
     
         controller.setWeightedEntities(CrewNo, LuggageNo, PaxNo);
-
+        
         
 
         Results results = new Results(controller);

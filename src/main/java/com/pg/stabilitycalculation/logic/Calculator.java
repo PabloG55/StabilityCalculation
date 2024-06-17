@@ -52,7 +52,7 @@ public class Calculator extends CalculatorUtils{
             double kg = CalculationUtils.calculateKG(totalShipWeight, totalShipMOMV2, gg);
             double tLevel = CalculationUtils.calculateTLevel(lcb, lcg, kml, kg);
             
-                return CalculationUtils.calculateCProa(dc, tLevel);
+            return CalculationUtils.calculateCProa(dc, tLevel);
         } catch (SQLException e) {
             e.printStackTrace();
             return 0;

@@ -129,14 +129,10 @@ public class CalculatorUtils {
     public double getTotalTanksMOMV1Misc(Connection connection, double[] miscTanks, String[] miscTanksS) throws SQLException{
         double totalTanksMOMV1Misc = 0;
         for (int i = 0; i < miscTanks.length; i++) {
-            totalTanksMOMV1Misc += CalculationUtils.calculateTankMOMV1(connection, miscTanks[i], miscTanksS[i]);
+            totalTanksMOMV1Misc += CalculationUtils.calculateTankFS(connection, miscTanks[i], miscTanksS[i]);
         }
         return totalTanksMOMV1Misc;
     }
-
-
-    
-
 
 
     public double sum4Values(double value1, double value2, double value3, double value4){

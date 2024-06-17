@@ -41,16 +41,16 @@ public class Controller {
         return values;
     }
 
-    public WeightedEntity getCrewValue() {
-        return crewValue;
+    public double getCrewValue() {
+        return crewValue.getEntityValue();
     }
 
-    public WeightedEntity getPaxValue() {
-        return paxValue;
+    public double getPaxValue() {
+        return paxValue.getEntityValue();
     }
 
-    public WeightedEntity getLuggageValue() {
-        return luggageValue;
+    public double getLuggageValue() {
+        return luggageValue.getEntityValue();
     }
 
     public void setBallastTanks(double[] ballastValues) {

@@ -14,8 +14,20 @@ public class LoadBallastTank extends javax.swing.JFrame {
     public LoadBallastTank() {
         initComponents();
         this.controller = new Controller();
+        setValues();
     }
-
+    
+    public void setValues(){
+        txtPeakPrt.setText("0");
+        txtNo00C.setText("0");
+        txtNo01C.setText("0");
+        txtNo02C.setText("0");
+        txtNo03C.setText("0");
+        txtNo04C.setText("0");
+        txtNo05C.setText("0");
+        txtNo06C.setText("0");
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

@@ -80,8 +80,8 @@ public class TankConstants {
     };
 
     public static final String[] MISCELLANEOUS_TANKS = {
-        MISCELLANEOUS_GRAY_WATER_NO08_C,
         MISCELLANEOUS_OILY_WATER_NO07_C,
+        MISCELLANEOUS_GRAY_WATER_NO08_C,
         MISCELLANEOUS_SLUDGE_STARBOARD_NO09,
     };
 

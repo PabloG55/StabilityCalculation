@@ -17,6 +17,13 @@ public class LoadMiscellaneousTank extends javax.swing.JFrame {
     public LoadMiscellaneousTank(Controller controller) {
         initComponents();
         this.controller = controller;
+        setValues();
+    }
+
+    public void setValues(){
+        txtMisOilyWater07.setText("0");
+        txtMisGrayWater08.setText("0");
+        txtMisSludgeStb09.setText("0");
     }
 
     /**

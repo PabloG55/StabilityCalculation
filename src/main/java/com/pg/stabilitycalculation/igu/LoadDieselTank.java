@@ -17,6 +17,17 @@ public class LoadDieselTank extends javax.swing.JFrame {
     public LoadDieselTank(Controller controller) {
         initComponents();
         this.controller = controller;
+        setValues();
+    }
+
+    public void setValues(){
+        txtDoPrt03.setText("0");
+        txtDoStb03.setText("0");
+        txtDoPrt04.setText("0");
+        txtDoStb04.setText("0");
+        txtDoPrt07.setText("0");
+        txtDoStb07.setText("0");
+        txtDoEmerPrt.setText("0");
     }
 
     /**

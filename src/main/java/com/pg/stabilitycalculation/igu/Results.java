@@ -4,8 +4,20 @@
  */
 package com.pg.stabilitycalculation.igu;
 
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+
+import com.pg.stabilitycalculation.logic.CalculationUtils;
 import com.pg.stabilitycalculation.logic.Calculator;
 import com.pg.stabilitycalculation.logic.Controller;
+import com.pg.stabilitycalculation.logic.Excel;
 import com.pg.stabilitycalculation.logic.TankConstants;
 
 /**
@@ -16,6 +28,8 @@ public class Results extends javax.swing.JFrame {
 
     private Controller controller;
     private Calculator calc;
+    private Excel excel;
+    
 
     /**
      * Creates new form Results
@@ -24,7 +38,25 @@ public class Results extends javax.swing.JFrame {
         initComponents();
         calc = new Calculator();
         this.controller = controller;
+        updatePaxs();
         setValues();
+        excel = new Excel();
+    }
+
+    public void updatePaxs(){
+        try (Connection connection = DriverManager.getConnection(System.getenv("DB_URL_ENDEAVOURII"),
+        System.getenv("DB_USERNAME"), System.getenv("DB_PASSWORD"))) {    
+            
+            double pax = controller.getPaxValue();
+            double crew = controller.getCrewValue();
+            double luggage = controller.getLuggageValue();
+            
+            CalculationUtils.updatePax(connection, crew, pax);
+            CalculationUtils.updateLuggage(connection, luggage);
+            
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }           
     }
 
     public void setValues() {
@@ -133,6 +165,7 @@ public class Results extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jScrollPane5 = new javax.swing.JScrollPane();
         jTextPane5 = new javax.swing.JTextPane();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -169,34 +202,51 @@ public class Results extends javax.swing.JFrame {
         jTextPane5.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jScrollPane5.setViewportView(jTextPane5);
 
+        jButton1.setText("Generate Excel");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                try {
+                    jButton1ActionPerformed(evt);
+                } catch (SQLException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel4)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel5)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel6)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel6)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(413, Short.MAX_VALUE))
+                        .addGap(237, 237, 237)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(261, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -221,7 +271,9 @@ public class Results extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel6)
                     .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(144, Short.MAX_VALUE))
+                .addGap(37, 37, 37)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(56, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -263,8 +315,52 @@ public class Results extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) throws SQLException {//GEN-FIRST:event_jButton1ActionPerformed
+        try (Connection connection = DriverManager.getConnection(System.getenv("DB_URL_ENDEAVOURII"),
+                System.getenv("DB_USERNAME"), System.getenv("DB_PASSWORD"))) {        
+                    
+            String[] ballastTanksS = TankConstants.BALLAST_TANKS;
+            String[] fwTanksS = TankConstants.FRESH_WATER_TANKS;
+            String[] dieselTanksS = TankConstants.DIESEL_TANKS;
+            String[] miscTanksS = TankConstants.MISCELLANEOUS_TANKS;
+
+            double[] ballastTanks = controller.getBallastTankValues();
+            double[] fwTanks = controller.getFreshwaterTankValues();
+            double[] dieselTanks = controller.getDieselTankValues();
+            double[] miscTanks = controller.getMiscTankValues();
+
+            XSSFWorkbook workbook = excel.CreateWorkbook();
+            XSSFSheet sheet1 = excel.createSheet(workbook, "Tanks Data");
+            
+            excel.createBallastTable(workbook, sheet1, connection, ballastTanks, ballastTanksS);
+            int startRowFW = sheet1.getLastRowNum() + 2;
+            excel.createFWTable(workbook, sheet1, startRowFW, connection, fwTanks, fwTanksS);
+            int startRowDiesel = sheet1.getLastRowNum() + 2;
+            excel.createDieselTable(workbook, sheet1, startRowDiesel, connection, dieselTanks, dieselTanksS);
+            int startRowMisc = sheet1.getLastRowNum() + 2;
+            excel.createMiscTable(workbook, sheet1, startRowMisc, connection, miscTanks, miscTanksS);
+
+            XSSFSheet sheet2 = excel.createSheet(workbook, "Results");
+            excel.createShipTable(workbook, sheet2, connection, ballastTanks, ballastTanksS, fwTanks, fwTanksS, dieselTanks, dieselTanksS, miscTanks, miscTanksS);
+            int startRowResults = sheet2.getLastRowNum() + 2;
+            excel.createResultTable(workbook, sheet2, startRowResults, connection, ballastTanks, ballastTanksS, fwTanks, fwTanksS, dieselTanks, dieselTanksS, miscTanks, miscTanksS);        
+
+            try (FileOutputStream fileOut = new FileOutputStream("Stability_Calculation.xlsx")) {
+                workbook.write(fileOut);
+                workbook.close();
+                System.out.println("Excel file has been generated successfully.");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }   
+    }//GEN-LAST:event_jButton1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

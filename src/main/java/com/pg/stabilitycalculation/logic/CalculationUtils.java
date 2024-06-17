@@ -229,11 +229,13 @@ public class CalculationUtils {
     }
 
     public static double calculateLuggageWeight(double luggage) {
-        final double LUGGAGE_TO_WEIGHT = 0.03;
+         final double LUGGAGE_TO_WEIGHT = 0.03;
         return luggage * LUGGAGE_TO_WEIGHT;
     }
 
-    public static void updatePax(Connection connection, double paxWeight) throws SQLException {
+    public static void updatePax(Connection connection, double crew, double pax) throws SQLException {
+        double totalPax = calculateTotalPax(crew, pax);
+        double paxWeight = calculatePaxWeight(totalPax);
         String query = "UPDATE Ship_Data SET Weight = ? WHERE Description LIKE 'Passengers';";
         try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
             preparedStatement.setDouble(1, paxWeight);
@@ -246,7 +248,8 @@ public class CalculationUtils {
         }
     }
 
-    public static void updateLuggage(Connection connection, double luggageWeight) throws SQLException {
+    public static void updateLuggage(Connection connection, double luggage) throws SQLException {
+        double luggageWeight = calculateLuggageWeight(luggage);
         String query = "UPDATE Ship_Data SET Weight = ? WHERE Description LIKE 'Luggage';";
         try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
             preparedStatement.setDouble(1, luggageWeight);
@@ -444,6 +447,31 @@ public class CalculationUtils {
 
     public static double calculateCPopa(double dc, double tLevel){
         return (dc + tLevel / 2) + 0.014;
+    }
+    
+    public static double getDataFromDB(String name, String description) {
+        try (Connection connection = DriverManager.getConnection(System.getenv("DB_URL_ENDEAVOURII"),
+                System.getenv("DB_USERNAME"), System.getenv("DB_PASSWORD"))) {
+            
+            String query = "SELECT " + name + " FROM ship_data WHERE Description LIKE ?";
+            
+            try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+                preparedStatement.setString(1, description);
+                
+                try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                    if (resultSet.next()) {
+                        return resultSet.getDouble(name);
+                    } else {
+                        System.out.println("No data found for " + description);
+                        return 0;
+                    }
+                }    
+            }    
+    
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return 0;
+        }            
     }
     
     
