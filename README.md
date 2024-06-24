@@ -10,7 +10,8 @@ This Java application automates the stability calculations for ships and is desi
 - **Export Results**: Users can export the results to a CSV file for further analysis or record-keeping.
 
 ## Installation
-To install the application, download the latest release from the releases page and follow the provided instructions.
+To install the application, download the latest [realese](https://github.com/PabloG55/StabilityCalculation/tree/main/StabilityCalculationApp) and open the StabilityCalulation-1.0.jar file. The Excel file will be saved in the same folder.
+
 
 ## Usage
 1. Run the application.
