@@ -336,8 +336,11 @@ public class Results extends javax.swing.JFrame {
 
             XSSFWorkbook workbook = excel.CreateWorkbook();
             XSSFSheet sheet1 = excel.createSheet(workbook, "Tanks Data");
+
             
-            excel.createBallastTable(workbook, sheet1, connection, ballastTanks, ballastTanksS);
+            excel.createHeaderTable(workbook, sheet1, controller); 
+            int startRowBallast = sheet1.getLastRowNum() + 2;       
+            excel.createBallastTable(workbook, sheet1, startRowBallast, connection, ballastTanks, ballastTanksS);
             int startRowFW = sheet1.getLastRowNum() + 2;
             excel.createFWTable(workbook, sheet1, startRowFW, connection, fwTanks, fwTanksS);
             int startRowDiesel = sheet1.getLastRowNum() + 2;

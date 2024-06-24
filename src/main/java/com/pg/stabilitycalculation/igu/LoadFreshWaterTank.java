@@ -276,7 +276,7 @@ public class LoadFreshWaterTank extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        LoadBallastTank ballast = new LoadBallastTank();
+        LoadBallastTank ballast = new LoadBallastTank(controller);
         ballast.setVisible(true);
         ballast.setLocationRelativeTo(null);
         this.dispose();

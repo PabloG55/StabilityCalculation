@@ -3,15 +3,16 @@ package com.pg.stabilitycalculation.logic;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
-import org.apache.poi.ss.usermodel.Cell;
-import org.apache.poi.ss.usermodel.CellStyle;
-import org.apache.poi.ss.usermodel.Font;
-import org.apache.poi.ss.usermodel.IndexedColors;
-import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.ss.util.AreaReference;
+import org.apache.poi.ss.util.CellRangeAddress;
 import org.apache.poi.ss.util.CellReference;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFTable;
@@ -25,6 +26,7 @@ public class Excel {
     private CalculatorUtils calc = new CalculatorUtils();
     private Calculator calculator = new Calculator();
     private CalculationUtils calcuUtils = new CalculationUtils();
+    private Controller controller = new Controller();
     public XSSFWorkbook CreateWorkbook() {
         return new XSSFWorkbook();
     }
@@ -33,7 +35,76 @@ public class Excel {
         return workbook.createSheet(name);
     }
 
-    public void createBallastTable(XSSFWorkbook workbook, XSSFSheet sheet, Connection connection, double[] ballastTanks, String[] ballastTanksS) throws SQLException {
+    public void createHeaderTable(XSSFWorkbook workbook, XSSFSheet sheet, Controller controller) {
+
+        String place = controller.getPlace();
+        String maneuver = controller.getManeuver();
+
+        // Populate data rows
+        int rowNum = 1;
+        // Set the current date
+        LocalDate localDate = LocalDate.now();
+        Date date = Date.from(localDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
+        
+        // Create a cell style with a date format
+        CellStyle dateCellStyle = workbook.createCellStyle();
+        CreationHelper creationHelper = workbook.getCreationHelper();
+        dateCellStyle.setDataFormat(creationHelper.createDataFormat().getFormat("yyyy-mm-dd"));
+        
+        
+        // Create a cell style for the header cells
+        CellStyle headerCellStyle = workbook.createCellStyle();
+        Font headerFont = workbook.createFont();
+        headerFont.setBold(true);
+        headerFont.setFontHeightInPoints((short) 14); // Increase font size
+        headerCellStyle.setFont(headerFont);
+        headerCellStyle.setAlignment(HorizontalAlignment.CENTER);
+        headerCellStyle.setVerticalAlignment(VerticalAlignment.CENTER);
+        
+        dateCellStyle.setFont(headerFont);
+
+        // Create rows with specific content and styles
+        Row row1 = sheet.createRow(rowNum++);
+        createAndMergeCell(sheet, row1, 0, 4, "M/N NATIONAL GEOGRAPHIC ENDEAVOUR II", headerCellStyle);
+
+        Row row2 = sheet.createRow(rowNum++);
+        createAndMergeCell(sheet, row2, 0, 4, "CALCULO DE ESTABILIDAD LONGITUDINAL Y TRANSVERSAL", headerCellStyle);
+
+        Row row3 = sheet.createRow(rowNum++);
+        createAndMergeCell(sheet, row3, 0, 4, "DESPUES DE LA RECEPCION   DE  COMBUSTIBLE", headerCellStyle);
+
+        Row row4 = sheet.createRow(rowNum++);
+        Cell dateLabelCell = row4.createCell(0);
+        dateLabelCell.setCellValue("Fecha:");
+        dateLabelCell.setCellStyle(headerCellStyle);
+
+        Cell dateCell = row4.createCell(1);
+        dateCell.setCellValue(date);
+        dateCell.setCellStyle(dateCellStyle);
+
+        Cell emptyCell = row4.createCell(2);
+        emptyCell.setCellStyle(headerCellStyle);
+
+        Cell placeCell = row4.createCell(3);
+        placeCell.setCellValue(place);
+        placeCell.setCellStyle(headerCellStyle);
+
+        Cell actionCell = row4.createCell(4);
+        actionCell.setCellValue(maneuver);
+        actionCell.setCellStyle(headerCellStyle);
+
+        // Resize columns
+        resizeColumns(sheet, 5);
+    }
+
+    private void createAndMergeCell(XSSFSheet sheet, Row row, int startCol, int endCol, String value, CellStyle style) {
+        Cell cell = row.createCell(startCol);
+        cell.setCellValue(value);
+        cell.setCellStyle(style);
+        sheet.addMergedRegion(new CellRangeAddress(row.getRowNum(), row.getRowNum(), startCol, endCol));
+    }
+
+    public void createBallastTable(XSSFWorkbook workbook, XSSFSheet sheet, int startRow, Connection connection, double[] ballastTanks, String[] ballastTanksS) throws SQLException {
         String[] columns = {
                 "Tanques lastre agua salada", "Capacidad (Ton. M)", "Pesos (Ton. M)", "LCG metros",
                 "MOMV 1 (mts - TM)", "VCG metros", "MOMV 2 (mts - TM)", "Superficie Libre mts-TM"
@@ -159,10 +230,11 @@ public class Excel {
         );
 
         // Create header
-        createTableHeader(sheet, columns, 0);
+        createTableHeader(sheet, columns, startRow);
 
-        // Populate data rows
-        int rowNum = 1;
+
+        // Populate data rows  
+        int rowNum = startRow + 1;
         for (TankData tankData : tankDataList) {
             Row row = sheet.createRow(rowNum++);
             row.createCell(0).setCellValue(tankData.getName());
@@ -179,7 +251,7 @@ public class Excel {
         resizeColumns(sheet, columns.length);
 
         // Create table
-        createTable(sheet, workbook, "BallastTable", 1L, 0, rowNum, columns.length);
+        createTable(sheet, workbook, "BallastTable", 1L, startRow, rowNum, columns.length);
     }
 
     public void createFWTable(XSSFWorkbook workbook, XSSFSheet sheet, int startRow, Connection connection, double[] fwTanks, String[] fwTanksS) throws SQLException {

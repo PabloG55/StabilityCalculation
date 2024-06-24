@@ -8,6 +8,17 @@ public class Controller {
     private WeightedEntity crewValue;
     private WeightedEntity luggageValue;
     private WeightedEntity paxValue;
+    private String place;
+    private String maneuver;
+
+
+    public String getPlace() {
+        return place;
+    }
+
+    public String getManeuver() {
+        return maneuver;
+    }
 
     public double[] getBallastTankValues() {
         double[] values = new double[ballastTanks.length];
@@ -85,5 +96,10 @@ public class Controller {
         crewValue = new WeightedEntity(crewNo);
         luggageValue = new WeightedEntity(luggageNo);
         paxValue = new WeightedEntity(paxNo);
+    }
+
+    public void setPlaceManeuver(String place, String maneuver) {
+        this.place = place;
+        this.maneuver = maneuver;
     }
 }

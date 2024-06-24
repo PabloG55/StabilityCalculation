@@ -111,9 +111,9 @@ public class Lander extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        LoadBallastTank loadBallastTank = new LoadBallastTank();
-        loadBallastTank.setVisible(true);
-        loadBallastTank.setLocationRelativeTo(null);
+        LoadPlace place = new LoadPlace();
+        place.setVisible(true);
+        place.setLocationRelativeTo(null);
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
