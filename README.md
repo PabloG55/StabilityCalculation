@@ -29,6 +29,9 @@ To install the application, download the latest release from the releases page a
 
 3. Review the results and export if necessary.
 ![](images/7.jpg)
+
 ![](images/8.jpg)
+
 ![](images/9.jpg)
+
 ![](images/10.jpg)
