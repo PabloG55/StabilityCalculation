@@ -1,5 +1,5 @@
 package com.pg.stabilitycalculation;
-import com.pg.stabilitycalculation.igu.Main;
+import com.pg.stabilitycalculation.igu.Lander;
 
 
 /**
@@ -10,7 +10,7 @@ import com.pg.stabilitycalculation.igu.Main;
 public class StabilityCalculation {
 
     public void initializeGUI() {
-        Main main = new Main();
+        Lander main = new Lander();
         main.setVisible(true);
         main.setLocationRelativeTo(null);
     }
@@ -19,6 +19,4 @@ public class StabilityCalculation {
         StabilityCalculation stabilityCalc = new StabilityCalculation();
         stabilityCalc.initializeGUI();
     }
-
-
 }

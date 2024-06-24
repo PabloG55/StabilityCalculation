@@ -450,8 +450,7 @@ public class CalculationUtils {
     }
     
     public static double getDataFromDB(String name, String description) {
-        try (Connection connection = DriverManager.getConnection(System.getenv("DB_URL_ENDEAVOURII"),
-                System.getenv("DB_USERNAME"), System.getenv("DB_PASSWORD"))) {
+        try (Connection connection = DriverManager.getConnection("jdbc:sqlite::resource:endeavourII_data.db")) {
             
             String query = "SELECT " + name + " FROM ship_data WHERE Description LIKE ?";
             

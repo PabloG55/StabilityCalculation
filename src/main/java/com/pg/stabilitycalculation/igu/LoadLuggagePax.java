@@ -16,6 +16,13 @@ public class LoadLuggagePax extends javax.swing.JFrame {
     public LoadLuggagePax(Controller controller) {
         initComponents();
         this.controller = controller;
+        setValues();
+    }
+
+    public void setValues(){
+        txtCrewNo.setText("0");
+        txtLuggageNo.setText("0");
+        txtPaxNo.setText("0");
     }
 
     /**

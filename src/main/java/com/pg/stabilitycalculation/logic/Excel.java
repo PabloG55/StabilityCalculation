@@ -24,7 +24,7 @@ import org.openxmlformats.schemas.spreadsheetml.x2006.main.CTTableStyleInfo;
 public class Excel {
     private CalculatorUtils calc = new CalculatorUtils();
     private Calculator calculator = new Calculator();
-
+    private CalculationUtils calcuUtils = new CalculationUtils();
     public XSSFWorkbook CreateWorkbook() {
         return new XSSFWorkbook();
     }
@@ -562,11 +562,11 @@ public class Excel {
         shipDataList.add(
             new ShipData(
                 "Buque Ligero",
-                CalculationUtils.getDataFromDB("Weight", "Light_Ship"),
-                CalculationUtils.getDataFromDB("LCG", "Light_Ship"),
-                CalculationUtils.getDataFromDB("MOMV1", "Light_Ship"),
-                CalculationUtils.getDataFromDB("VCG", "Light_Ship"),
-                CalculationUtils.getDataFromDB("MOMV2", "Light_Ship"),
+                calcuUtils.getDataFromDB("Weight", "Light_Ship"),
+                calcuUtils.getDataFromDB("LCG", "Light_Ship"),
+                calcuUtils.getDataFromDB("MOMV1", "Light_Ship"),
+                calcuUtils.getDataFromDB("VCG", "Light_Ship"),
+                calcuUtils.getDataFromDB("MOMV2", "Light_Ship"),
                 0
             )
         );
@@ -574,11 +574,11 @@ public class Excel {
         shipDataList.add(
             new ShipData(
                 "Tripulación - Efectos",
-                CalculationUtils.getDataFromDB("Weight", "Crew_PersonalEffects"),
-                CalculationUtils.getDataFromDB("LCG", "Crew_PersonalEffects"),
-                CalculationUtils.getDataFromDB("MOMV1", "Crew_PersonalEffects"),
-                CalculationUtils.getDataFromDB("VCG", "Crew_PersonalEffects"),
-                CalculationUtils.getDataFromDB("MOMV2", "Crew_PersonalEffects"),
+                calcuUtils.getDataFromDB("Weight", "Crew_PersonalEffects"),
+                calcuUtils.getDataFromDB("LCG", "Crew_PersonalEffects"),
+                calcuUtils.getDataFromDB("MOMV1", "Crew_PersonalEffects"),
+                calcuUtils.getDataFromDB("VCG", "Crew_PersonalEffects"),
+                calcuUtils.getDataFromDB("MOMV2", "Crew_PersonalEffects"),
                 0
             )
         );
@@ -586,11 +586,11 @@ public class Excel {
         shipDataList.add(
             new ShipData(
                 "Total pañoles",
-                CalculationUtils.getDataFromDB("Weight", "Total_Store"),
-                CalculationUtils.getDataFromDB("LCG", "Total_Store"),
-                CalculationUtils.getDataFromDB("MOMV1", "Total_Store"),
-                CalculationUtils.getDataFromDB("VCG", "Total_Store"),
-                CalculationUtils.getDataFromDB("MOMV2", "Total_Store"),
+                calcuUtils.getDataFromDB("Weight", "Total_Store"),
+                calcuUtils.getDataFromDB("LCG", "Total_Store"),
+                calcuUtils.getDataFromDB("MOMV1", "Total_Store"),
+                calcuUtils.getDataFromDB("VCG", "Total_Store"),
+                calcuUtils.getDataFromDB("MOMV2", "Total_Store"),
                 0
             )
         );
@@ -598,11 +598,11 @@ public class Excel {
         shipDataList.add(
             new ShipData(
                 "Pasajeros",
-                CalculationUtils.getDataFromDB("Weight", "Passengers"),
-                CalculationUtils.getDataFromDB("LCG", "Passengers"),
-                CalculationUtils.getDataFromDB("MOMV1", "Passengers"),
-                CalculationUtils.getDataFromDB("VCG", "Passengers"),
-                CalculationUtils.getDataFromDB("MOMV2", "Passengers"),
+                calcuUtils.getDataFromDB("Weight", "Passengers"),
+                calcuUtils.getDataFromDB("LCG", "Passengers"),
+                calcuUtils.getDataFromDB("MOMV1", "Passengers"),
+                calcuUtils.getDataFromDB("VCG", "Passengers"),
+                calcuUtils.getDataFromDB("MOMV2", "Passengers"),
                 0
             )
         );
@@ -610,11 +610,11 @@ public class Excel {
         shipDataList.add(
             new ShipData(
                 "Equipaje",
-                CalculationUtils.getDataFromDB("Weight", "Luggage"),
-                CalculationUtils.getDataFromDB("LCG", "Luggage"),
-                CalculationUtils.getDataFromDB("MOMV1", "Luggage"),
-                CalculationUtils.getDataFromDB("VCG", "Luggage"),
-                CalculationUtils.getDataFromDB("MOMV2", "Luggage"),
+                calcuUtils.getDataFromDB("Weight", "Luggage"),
+                calcuUtils.getDataFromDB("LCG", "Luggage"),
+                calcuUtils.getDataFromDB("MOMV1", "Luggage"),
+                calcuUtils.getDataFromDB("VCG", "Luggage"),
+                calcuUtils.getDataFromDB("MOMV2", "Luggage"),
                 0
             )
         );
@@ -622,11 +622,11 @@ public class Excel {
         shipDataList.add(
             new ShipData(
                 "Equipo Exp.",
-                CalculationUtils.getDataFromDB("Weight", "Expedition_Gear"),
-                CalculationUtils.getDataFromDB("LCG", "Expedition_Gear"),
-                CalculationUtils.getDataFromDB("MOMV1", "Expedition_Gear"),
-                CalculationUtils.getDataFromDB("VCG", "Expedition_Gear"),
-                CalculationUtils.getDataFromDB("MOMV2", "Expedition_Gear"),
+                calcuUtils.getDataFromDB("Weight", "Expedition_Gear"),
+                calcuUtils.getDataFromDB("LCG", "Expedition_Gear"),
+                calcuUtils.getDataFromDB("MOMV1", "Expedition_Gear"),
+                calcuUtils.getDataFromDB("VCG", "Expedition_Gear"),
+                calcuUtils.getDataFromDB("MOMV2", "Expedition_Gear"),
                 0
             )
         );

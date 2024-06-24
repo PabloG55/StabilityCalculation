@@ -6,8 +6,7 @@ import java.sql.SQLException;
 
 public class Calculator extends CalculatorUtils{
         public double getCPort(String[] ballastTanksS, String[] fwTanksS , String[] dieselTanksS, String[] miscTanksS, double[] ballastTanks, double[] fwTanks, double[] dieselTanks, double[] miscTanks) {
-        try (Connection connection = DriverManager.getConnection(System.getenv("DB_URL_ENDEAVOURII"),
-                System.getenv("DB_USERNAME"), System.getenv("DB_PASSWORD"))) {
+        try (Connection connection = DriverManager.getConnection("jdbc:sqlite::resource:endeavourII_data.db")) {
             
             double totalTanksWeightBallast = getTotalTanksWeightBallast(connection, ballastTanks, ballastTanksS);
             double totalTanksWeightDiesel = getTotalTanksWeightDiesel(connection, dieselTanks, dieselTanksS);
@@ -60,8 +59,7 @@ public class Calculator extends CalculatorUtils{
     }
 
     public double getCStarboard(String[] ballastTanksS, String[] fwTanksS , String[] dieselTanksS, String[] miscTanksS, double[] ballastTanks, double[] fwTanks, double[] dieselTanks, double[] miscTanks) {
-        try (Connection connection = DriverManager.getConnection(System.getenv("DB_URL_ENDEAVOURII"),
-                System.getenv("DB_USERNAME"), System.getenv("DB_PASSWORD"))) {
+        try (Connection connection = DriverManager.getConnection("jdbc:sqlite::resource:endeavourII_data.db")) {
             
             double totalTanksWeightBallast = getTotalTanksWeightBallast(connection, ballastTanks, ballastTanksS);
             double totalTanksWeightDiesel = getTotalTanksWeightDiesel(connection, dieselTanks, dieselTanksS);
@@ -114,8 +112,7 @@ public class Calculator extends CalculatorUtils{
     }
 
     public double getKM(String[] ballastTanksS, String[] fwTanksS , String[] dieselTanksS, String[] miscTanksS, double[] ballastTanks, double[] fwTanks, double[] dieselTanks, double[] miscTanks) {
-        try (Connection connection = DriverManager.getConnection(System.getenv("DB_URL_ENDEAVOURII"),
-                System.getenv("DB_USERNAME"), System.getenv("DB_PASSWORD"))) {
+        try (Connection connection = DriverManager.getConnection("jdbc:sqlite::resource:endeavourII_data.db")) {
             
         double totalTanksWeightBallast = getTotalTanksWeightBallast(connection, ballastTanks, ballastTanksS);
         double totalTanksWeightDiesel = getTotalTanksWeightDiesel(connection, dieselTanks, dieselTanksS);
@@ -138,8 +135,7 @@ public class Calculator extends CalculatorUtils{
 }
 
     public double getKG(String[] ballastTanksS, String[] fwTanksS , String[] dieselTanksS, String[] miscTanksS, double[] ballastTanks, double[] fwTanks, double[] dieselTanks, double[] miscTanks) {
-        try (Connection connection = DriverManager.getConnection(System.getenv("DB_URL_ENDEAVOURII"),
-                System.getenv("DB_USERNAME"), System.getenv("DB_PASSWORD"))) {
+        try (Connection connection = DriverManager.getConnection("jdbc:sqlite::resource:endeavourII_data.db")) {
             
             double totalTanksWeightBallast = getTotalTanksWeightBallast(connection, ballastTanks, ballastTanksS);
             double totalTanksWeightDiesel = getTotalTanksWeightDiesel(connection, dieselTanks, dieselTanksS);
@@ -178,8 +174,7 @@ public class Calculator extends CalculatorUtils{
     }
 
     public double getGM(String[] ballastTanksS, String[] fwTanksS , String[] dieselTanksS, String[] miscTanksS, double[] ballastTanks, double[] fwTanks, double[] dieselTanks, double[] miscTanks) {
-        try (Connection connection = DriverManager.getConnection(System.getenv("DB_URL_ENDEAVOURII"),
-                System.getenv("DB_USERNAME"), System.getenv("DB_PASSWORD"))) {
+        try (Connection connection = DriverManager.getConnection("jdbc:sqlite::resource:endeavourII_data.db")) {
             
             double totalTanksWeightBallast = getTotalTanksWeightBallast(connection, ballastTanks, ballastTanksS);
             double totalTanksWeightDiesel = getTotalTanksWeightDiesel(connection, dieselTanks, dieselTanksS);

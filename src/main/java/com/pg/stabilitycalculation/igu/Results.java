@@ -4,13 +4,17 @@
  */
 package com.pg.stabilitycalculation.igu;
 
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
-import org.apache.poi.ss.usermodel.Workbook;
+import javax.swing.JOptionPane;
+
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
@@ -29,6 +33,7 @@ public class Results extends javax.swing.JFrame {
     private Controller controller;
     private Calculator calc;
     private Excel excel;
+    private int count = 0;
     
 
     /**
@@ -44,8 +49,7 @@ public class Results extends javax.swing.JFrame {
     }
 
     public void updatePaxs(){
-        try (Connection connection = DriverManager.getConnection(System.getenv("DB_URL_ENDEAVOURII"),
-        System.getenv("DB_USERNAME"), System.getenv("DB_PASSWORD"))) {    
+        try (Connection connection = DriverManager.getConnection("jdbc:sqlite::resource:endeavourII_data.db")) {     
             
             double pax = controller.getPaxValue();
             double crew = controller.getCrewValue();
@@ -208,6 +212,8 @@ public class Results extends javax.swing.JFrame {
                 try {
                     jButton1ActionPerformed(evt);
                 } catch (SQLException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
                     // TODO Auto-generated catch block
                     e.printStackTrace();
                 }
@@ -315,9 +321,8 @@ public class Results extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) throws SQLException {//GEN-FIRST:event_jButton1ActionPerformed
-        try (Connection connection = DriverManager.getConnection(System.getenv("DB_URL_ENDEAVOURII"),
-                System.getenv("DB_USERNAME"), System.getenv("DB_PASSWORD"))) {        
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) throws SQLException, IOException {//GEN-FIRST:event_jButton1ActionPerformed
+        try (Connection connection = DriverManager.getConnection("jdbc:sqlite::resource:endeavourII_data.db")) {        
                     
             String[] ballastTanksS = TankConstants.BALLAST_TANKS;
             String[] fwTanksS = TankConstants.FRESH_WATER_TANKS;
@@ -345,10 +350,32 @@ public class Results extends javax.swing.JFrame {
             int startRowResults = sheet2.getLastRowNum() + 2;
             excel.createResultTable(workbook, sheet2, startRowResults, connection, ballastTanks, ballastTanksS, fwTanks, fwTanksS, dieselTanks, dieselTanksS, miscTanks, miscTanksS);        
 
-            try (FileOutputStream fileOut = new FileOutputStream("Stability_Calculation.xlsx")) {
+            // Get the current date and format it
+            String pattern = "yyyy_MM_dd"; // You can change the pattern as needed
+            SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
+            String date = simpleDateFormat.format(new Date());
+
+            // Get the user home directory
+            String workingDirectory = System.getProperty("user.dir");
+
+            // Define the application directory within the user home directory
+            String targetDirectory = workingDirectory + File.separator + "StabilityCalc_ExcelDocs";
+            File directory = new File(targetDirectory);
+
+            // Create the directory if it doesn't exist
+            if (!directory.exists()) {
+                directory.mkdirs();
+            }
+
+            // Define the file name with the current date
+            String fileName = "Stability_Calculation_" + date + "_" + count + ".xlsx";
+            count++;
+
+            try (FileOutputStream fileOut = new FileOutputStream(new File(directory, fileName))) {
                 workbook.write(fileOut);
                 workbook.close();
-                System.out.println("Excel file has been generated successfully.");
+                System.out.println("Excel file has been generated successfully at: " + new File(directory, fileName).getAbsolutePath());
+                JOptionPane.showMessageDialog(null, "Excel file has been generated successfully at: " + new File(directory, fileName).getAbsolutePath());
             } catch (IOException e) {
                 e.printStackTrace();
             }
